@@ -24,7 +24,6 @@ pip3 install -U hodgelaplacians
 ```
 
 ## Example
-
 ```python
 from hodgelaplacians import HodgeLaplacians
 
@@ -33,6 +32,9 @@ simplices = ((1,2,3), (2,3), (1,2,4), (6,3))
 hl = HodgeLaplacians(simplices)
 L1 = hl.getHodgeLaplacian(1)
 ```
+
+Full example output is available in the [Jupyter notebook](examples/laplacians_combinatorial_data.ipynb).
+
 
 ## Tutorials and packages on TDA
 
