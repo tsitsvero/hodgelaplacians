@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: hodgelaplacians
+Version: 0.1
+Summary: Hodge Laplacians and their spectra
+Home-page: https://github.com/tsitsvero/hodgelaplacians
+Author: Mikhail Tsitsvero
+Author-email: tsitsvero@gmail.com
+License: UNKNOWN
+Description: # HodgeLaplacians
+        Hodge and Bochner Laplacians of Simplicial Complexes and Their Spectra
+        
+Keywords: Laplacian,TDA,Spectrum
+Platform: UNKNOWN
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
