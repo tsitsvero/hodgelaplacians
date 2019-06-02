@@ -227,18 +227,18 @@ RUN sudo apt-get install -yq \
     locales \
     tzdata
 
-# Timezone
-RUN sudo echo "Europe/Paris" | sudo tee /etc/timezone && \
-    sudo ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
-    sudo dpkg-reconfigure -f noninteractive tzdata
+# # Timezone
+# RUN sudo echo "Europe/Paris" | sudo tee /etc/timezone && \
+#     sudo ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
+#     sudo dpkg-reconfigure -f noninteractive tzdata
 
-# Locale with UTF-8 support
-RUN sudo echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
-    sudo locale-gen && \
-    sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+# # Locale with UTF-8 support
+# RUN sudo echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
+#     sudo locale-gen && \
+#     sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+# ENV LANG en_US.UTF-8
+# ENV LANGUAGE en_US:en
+# ENV LC_ALL en_US.UTF-8
 
 # Required for Gudhi compilation
 RUN apt-get install -yq curl \
