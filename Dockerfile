@@ -241,7 +241,7 @@ RUN sudo apt-get install -yq \
 # ENV LC_ALL en_US.UTF-8
 
 # Required for Gudhi compilation
-RUN apt-get install -yq curl \
+RUN sudo apt-get install -yq curl \
     make \
     cmake \
     g++ \
