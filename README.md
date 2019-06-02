@@ -1,6 +1,6 @@
 # HodgeLaplacians
 
-This package provides an interface for construction of Hodge and Bochner Laplacian matrices from the set of simplices. 
+This package provides an interface for construction of Hodge and Bochner Laplacian matrices from the set of simplices.
 
 `HodgeLaplacians` uses [sparse matrices](https://docs.scipy.org/doc/scipy/reference/sparse.html) `dok_matrix` and `csr_matrix` from `scipy.sparse module.` Eigenvalues and eigenvectors are computed using [Scipy ARPACK algorithm](https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html).
 
@@ -22,6 +22,9 @@ Input:
 ```python
 pip3 install -U hodgelaplacians
 ```
+## Dependencies
+* Numpy
+* Scipy
 
 ## Example
 ```python
@@ -49,4 +52,4 @@ There is a wiki page with a [list of TDA packages](https://en.wikipedia.org/wiki
 ## Coming soon
 * Random walks on simplicial complexes
 * Tutorials on spectral theory of simplicial complexes
-* Tutorials with point cloud examples 
+* Tutorials with point cloud examples
