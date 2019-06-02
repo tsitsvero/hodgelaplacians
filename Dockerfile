@@ -222,15 +222,15 @@ RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -q
 #     apt-get upgrade -y
 
 # Tools necessary for installing and configuring Ubuntu
-RUN sudo apt-get install -y \
-    apt-utils \
-    locales \
-    tzdata
+# RUN sudo apt-get install -y \
+#     apt-utils \
+#     locales \
+#     tzdata
 
 # Timezone
-RUN echo "Europe/Paris" | tee /etc/timezone && \
-    ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata
+# RUN echo "Europe/Paris" | tee /etc/timezone && \
+#     ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
+#     dpkg-reconfigure -f noninteractive tzdata
 
 # Locale with UTF-8 support
 RUN echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
