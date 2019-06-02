@@ -274,7 +274,7 @@ RUN pip3 install \
     jupyterlab
 
 # apt clean up
-RUN apt autoremove && rm -rf /var/lib/apt/lists/*
+RUN sudo apt autoremove && sudo rm -rf /var/lib/apt/lists/*
 
 # Working directory
 WORKDIR /gudhi
