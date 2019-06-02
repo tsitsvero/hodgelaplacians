@@ -1,6 +1,7 @@
-# Image de base
+# This file contains standard dockerfile for gitpod workspace and gudhi docker file
 #FROM ubuntu:18.04
-
+#
+# First part contains dockerfile https://hub.docker.com/r/gitpod/workspace-full/dockerfile
 FROM buildpack-deps:cosmic
 
 ### base ###
@@ -163,7 +164,7 @@ RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -q
     && { [ -z "$notOwnedFile" ] \
         || { echo "Error: not all files/dirs in $HOME are owned by 'gitpod' user & group"; exit 1; } }
 
-### Gudhi 2.3.0 Docker file
+### Second part contains Gudhi 2.3.0 dockerfile http://gudhi.gforge.inria.fr/dockerfile/
 # Update and upgrade distribution
 RUN apt-get update && \
     apt-get upgrade -y
