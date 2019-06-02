@@ -222,26 +222,26 @@ RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -q
 #     apt-get upgrade -y
 
 # Tools necessary for installing and configuring Ubuntu
-# RUN sudo apt-get install -y \
-#     apt-utils \
-#     locales \
-#     tzdata
+RUN sudo apt-get install -yq \
+    apt-utils \
+    locales \
+    tzdata
 
 # Timezone
-# RUN echo "Europe/Paris" | tee /etc/timezone && \
-#     ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
-#     dpkg-reconfigure -f noninteractive tzdata
+RUN echo "Europe/Paris" | tee /etc/timezone && \
+    ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 # Locale with UTF-8 support
-# RUN echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
-#     locale-gen && \
-#     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-# ENV LANG en_US.UTF-8
-# ENV LANGUAGE en_US:en
-# ENV LC_ALL en_US.UTF-8
+RUN echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
+    locale-gen && \
+    update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Required for Gudhi compilation
-RUN sudo apt-get install -y curl \
+RUN sudo apt-get install -yq curl \
     make \
     cmake \
     g++ \
