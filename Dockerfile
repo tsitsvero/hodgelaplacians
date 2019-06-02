@@ -45,12 +45,14 @@ RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
 ### Java & Maven ###
-RUN add-apt-repository -yu ppa:webupd8team/java \
-    && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
-    && apt-get install -yq \
-        gradle \
-        oracle-java8-installer \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+# RUN add-apt-repository -yu ppa:webupd8team/java \
+#     && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
+#     && apt-get install -yq \
+#         gradle \
+#         oracle-java8-installer \
+#     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+
+RUN apt-get install default-jre
 
 ARG MAVEN_VERSION=3.5.4
 ENV MAVEN_HOME=/usr/share/maven
