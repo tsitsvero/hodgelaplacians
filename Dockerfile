@@ -259,7 +259,8 @@ RUN sudo apt-get install -yq curl \
     python3-pytest \
     python3-tk \
     libfreetype6-dev \
-    pkg-config
+    pkg-config \
+    qt5-default
 
 RUN pip3 install \
     Cython \
@@ -283,7 +284,7 @@ RUN sudo chown gitpod:gitpod /gudhi
 
 RUN curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
 && tar xf CGAL-4.12.1.tar.xz && cd CGAL-4.12.1 \
-&& cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_HEADER_ONLY=ON . && make all install && cd .. \
+&& sudo cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_HEADER_ONLY=ON . && sudo make all install && cd .. \
 && curl -LO "https://gforge.inria.fr/frs/download.php/file/37696/2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz" \
 && tar xf 2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz \
 && cd 2018-09-04-14-25-00_GUDHI_2.3.0 \
