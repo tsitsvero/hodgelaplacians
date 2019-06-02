@@ -52,7 +52,6 @@ RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
 #         oracle-java8-installer \
 #     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
-RUN apt-get install default-jre
 
 ARG MAVEN_VERSION=3.5.4
 ENV MAVEN_HOME=/usr/share/maven
