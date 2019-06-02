@@ -228,7 +228,7 @@ RUN sudo apt-get install -yq \
     tzdata
 
 # Timezone
-RUN sudo echo "Europe/Paris" | tee /etc/timezone && \
+RUN sudo echo "Europe/Paris" | sudo tee /etc/timezone && \
     sudo ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
     sudo dpkg-reconfigure -f noninteractive tzdata
 
