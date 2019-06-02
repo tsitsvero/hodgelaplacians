@@ -1,0 +1,11 @@
+# The Docker image to run your workspace in. Defaults to gitpod/workspace-full
+image:
+  file: Dockerfile
+# Command to start on workspace startup (optional)
+tasks:
+  - init: yarn install
+    command: yarn build
+# Ports to expose on workspace startup (optional)
+ports:
+  - port: 8888
+    onOpen: open-preview
