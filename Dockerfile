@@ -222,7 +222,7 @@ RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -q
 #     apt-get upgrade -y
 
 # Tools necessary for installing and configuring Ubuntu
-RUN apt-get install -y \
+RUN sudo apt-get install -y \
     apt-utils \
     locales \
     tzdata
