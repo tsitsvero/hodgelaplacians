@@ -279,10 +279,12 @@ RUN sudo apt autoremove && sudo rm -rf /var/lib/apt/lists/*
 # Working directory
 WORKDIR /gudhi
 
-RUN sudo curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
+RUN sudo chown gitpod:gitpod /gudhi
+
+RUN curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
 && tar xf CGAL-4.12.1.tar.xz && cd CGAL-4.12.1 \
 && cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_HEADER_ONLY=ON . && make all install && cd .. \
-&& sudo curl -LO "https://gforge.inria.fr/frs/download.php/file/37696/2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz" \
+&& curl -LO "https://gforge.inria.fr/frs/download.php/file/37696/2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz" \
 && tar xf 2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz \
 && cd 2018-09-04-14-25-00_GUDHI_2.3.0 \
 && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DWITH_GUDHI_PYTHON=OFF -DPython_ADDITIONAL_VERSIONS=3 ..  \
