@@ -218,8 +218,8 @@ RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -q
 
 ### Second part contains Gudhi 2.3.0 dockerfile http://gudhi.gforge.inria.fr/dockerfile/
 # Update and upgrade distribution
-# RUN apt-get update && \
-#     apt-get upgrade -y
+RUN apt-get update && \
+    apt-get upgrade -yq
 
 # Tools necessary for installing and configuring Ubuntu
 RUN sudo apt-get install -yq \
@@ -241,7 +241,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Required for Gudhi compilation
-RUN sudo apt-get install -yq curl \
+RUN apt-get install -yq curl \
     make \
     cmake \
     g++ \
