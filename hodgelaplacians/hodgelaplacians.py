@@ -19,7 +19,7 @@ class HodgeLaplacians:
     or simplicial tree."""
     def __init__(self, simplices, maxdimension=2, mode='normal'):
         self.mode = mode
-        
+
         if mode == 'normal':
             self.import_simplices(simplices=simplices)
             max_simplex_size = len(max(self.face_set, key=lambda el: len(el)))
@@ -28,9 +28,9 @@ class HodgeLaplacians:
                 self.maxdim = max_simplex_size - 1
             elif maxdimension < 0:
                 raise ValueError(f"maxdimension should be a positive integer!")
-            else: 
+            else:
                 self.maxdim = maxdimension
-                
+
         elif mode == 'gudhi':
             self.simplices = [tuple(a[0]) for a in simplices] # Removing filtration values
             self.face_set = self.simplices # Assume that the set of simplices is full
@@ -40,16 +40,16 @@ class HodgeLaplacians:
                 self.maxdim = max_simplex_size - 1
             elif maxdimension < 0:
                 raise ValueError(f"maxdimension should be a positive integer!")
-            else: 
+            else:
                 self.maxdim = maxdimension
         else:
             raise ValueError(f"Désolé... Import modes different from 'normal' and 'gudhi' are not implemented yet...")
 
-            
+
     def import_simplices(self, simplices=[]):
         self.simplices = tuple(map(lambda simplex: tuple(sorted(simplex)), simplices))
         self.face_set = self._faces(self.simplices)
-              
+
     def n_faces(self, n):
         return tuple(filter(lambda face: len(face) == n+1, self.face_set))
 
@@ -61,7 +61,7 @@ class HodgeLaplacians:
                 for face in combinations(simplex, r):
                     faceset.add(tuple(sorted(face)))
         return faceset
-    
+
     def boundary_operator(self, i):
         source_simplices = self.n_faces(i)
         target_simplices = self.n_faces(i-1)
@@ -85,14 +85,14 @@ class HodgeLaplacians:
                     j = source_simplices_dict[source_simplex]
                     S[i, j] = -1 if a % 2 == 1 else 1   # S[i, j] = (-1)**a
         return S
-   
+
     @lru_cache(maxsize=32)
     def getBoundaryOperator(self,d):
         if d >= 0 and d <= self.maxdim:
             return self.boundary_operator(d).tocsr()
         else:
             raise ValueError(f"d should be not greater than {self.maxdim} (maximal allowed dimension for simplices)")
-    
+
     @lru_cache(maxsize=32)
     def getHodgeLaplacian(self,d):
         if d == 0:
@@ -112,74 +112,74 @@ class HodgeLaplacians:
         else:
             raise ValueError(f"d should be not greater than {self.maxdim} (maximal dimension simplices)")
         return L
-       
+
     def getBochnerLaplacian(self,d):
         LB = self.getHodgeLaplacian(d)
         LB = LB - diags(LB.diagonal())
         ddd = norm(LB, 1, 1)
-        LB = LB + diags(ddd) # Weitzenböck decomposition 
+        LB = LB + diags(ddd) # Weitzenböck decomposition
         return LB
-    
+
     @lru_cache(maxsize=32)
     def getHodgeHeatKernel(self,d,t):
         L = self.getHodgeLaplacian(d)
         L = L.multiply(t)
         return expm(L)
-    
+
     @lru_cache(maxsize=32)
     def getBochnerHeatKernel(self,d,t):
         LB = self.getBochnerLaplacian(d)
         LB = L.multiply(t)
-        return expm(L)
-    
+        return expm(LB)
+
     def diffuseChainHodge(self, d, chain, t):
         HK = self.getHodgeHeatKernel(d,t)
         diff_chain = HK.dot(chain)
         return diff_chain
-    
+
     def diffuseChainBochner(self, d, chain, t):
         HK = self.getBochnerHeatKernel(d,t)
         diff_chain = HK.dot(chain)
         return diff_chain
-    
+
     def getCombinatorialRicci(self,d):
         L = self.getHodgeLaplacian(d)
         LB = self.getBochnerLaplacian(d)
         Ricci = L - LB
         Ricci = Ricci.diagonal()
-        return Ricci    
-    
+        return Ricci
+
     def getHodgeSpectrum(self, d, k, around_point=0.01):
         """Obtain k eigenvalues and eigenvectors of d-Hodge Laplacian.
-        Eigenvalues and eigenvectors are computed sufficently fast 
+        Eigenvalues and eigenvectors are computed sufficently fast
         using Shift-Invert mode of the ARPACK algorithm in SciPy.
         More info: https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html"""
         L = self.getHodgeLaplacian(d)
         vals, vecs = eigsh(L, k=k, sigma=around_point, which='LM')
         vecs = vecs.transpose()
         return vals, vecs
-  
+
     def getBochnerSpectrum(self, d, k, around_point=0.01):
         """Obtain k eigenvalues and eigenvectors of d-Hodge Laplacian.
-        Eigenvalues and eigenvectors are computed sufficently fast 
+        Eigenvalues and eigenvectors are computed sufficently fast
         using Shift-Invert mode of the ARPACK algorithm in SciPy.
         More info: https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html"""
         LB = self.getBochnerLaplacian(d)
         vals, vecs = eigsh(LB, k=k, sigma=around_point, which='LM')
         vecs = vecs.transpose()
         return vals, vecs
-      
+
     def randomWalkDistribution(self, d, chain_distribution, time):
         """To be implemented based on the work
-        S. Mukherjee￼ and J. Steenbergen, 
+        S. Mukherjee￼ and J. Steenbergen,
         Random walks on simplicial complexes and harmonics
         https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5324709/"""
         pass
-    
+
     def randomWalkChain(self, d, chain, time):
         """To be implemented based on the work
-        S. Mukherjee￼ and J. Steenbergen, 
+        S. Mukherjee￼ and J. Steenbergen,
         Random walks on simplicial complexes and harmonics
         https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5324709/"""
         pass
-        
+
