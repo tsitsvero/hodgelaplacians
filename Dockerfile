@@ -229,8 +229,8 @@ RUN sudo apt-get install -yq \
 
 # Timezone
 RUN sudo echo "Europe/Paris" | tee /etc/timezone && \
-    ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata
+    sudo ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
+    sudo dpkg-reconfigure -f noninteractive tzdata
 
 # Locale with UTF-8 support
 RUN echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
