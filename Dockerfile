@@ -241,7 +241,7 @@ RUN notOwnedFile=$(find . -not "(" -user gitpod -and -group gitpod ")" -print -q
 # ENV LC_ALL en_US.UTF-8
 
 # Required for Gudhi compilation
-RUN apt-get install -y curl \
+RUN sudo apt-get install -y curl \
     make \
     cmake \
     g++ \
