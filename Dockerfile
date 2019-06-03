@@ -290,6 +290,7 @@ RUN sudo curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGA
 && cd 2018-09-04-14-25-00_GUDHI_2.3.0 \
 && sudo mkdir build && cd build && sudo cmake -DCMAKE_BUILD_TYPE=Release -DWITH_GUDHI_PYTHON=OFF -DPython_ADDITIONAL_VERSIONS=3 ..  \
 && sudo make all doxygen test install \
-&& sudo cmake -DWITH_GUDHI_PYTHON=ON . \
-&& cd cython \
-&& sudo python3 setup.py install
+&& sudo cmake -DWITH_GUDHI_PYTHON=ON .
+
+RUN cd cython \
+&& python3 setup.py install
