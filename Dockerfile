@@ -292,6 +292,8 @@ RUN sudo curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGA
 && sudo make all doxygen test install \
 && sudo cmake -DWITH_GUDHI_PYTHON=ON .
 
+sudo chown -r gitpod:gitpod /gudhi
+
 RUN pwd \
 && ls -la \
 && cd 2018-09-04-14-25-00_GUDHI_2.3.0/build/cython \
