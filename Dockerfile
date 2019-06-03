@@ -282,8 +282,8 @@ WORKDIR /gudhi
 
 RUN sudo chown gitpod:gitpod /gudhi
 
-RUN curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
-&& tar xf CGAL-4.12.1.tar.xz && cd CGAL-4.12.1 \
+RUN sudo curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
+&& sudo tar xf CGAL-4.12.1.tar.xz && cd CGAL-4.12.1 \
 && sudo cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_HEADER_ONLY=ON . && sudo make all install && cd .. \
 && curl -LO "https://gforge.inria.fr/frs/download.php/file/37696/2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz" \
 && tar xf 2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz \
