@@ -292,5 +292,5 @@ RUN sudo curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGA
 && sudo make all doxygen test install \
 && sudo cmake -DWITH_GUDHI_PYTHON=ON .
 
-RUN cd cython \
+RUN sudo cd cython \
 && python3 setup.py install
