@@ -20,11 +20,16 @@ Input:
 
 ## Installation
 ```python
-pip3 install -U hodgelaplacians
+pip3 install hodgelaplacians
 ```
 ## Dependencies
 * Numpy
 * Scipy
+
+## Docker file and running on Gitpod
+This repository also contains Dockerfile based on Ubuntu 18.04 which contains basic python dependencies as well as installation of Gudhi library.
+
+To run this repository with Dockerfile on Gitpod you can simply press [https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians](https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians).
 
 ## Example
 ```python
