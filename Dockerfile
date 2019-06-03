@@ -292,7 +292,7 @@ RUN sudo curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGA
 && sudo make all doxygen test install \
 && sudo cmake -DWITH_GUDHI_PYTHON=ON .
 
-RUN sudo chown -r gitpod:gitpod /gudhi
+RUN sudo chown -R gitpod:gitpod /gudhi
 
 # RUN pwd \
 # && ls -la \
