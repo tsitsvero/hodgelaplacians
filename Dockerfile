@@ -64,6 +64,7 @@ RUN pip3 install \
     scipy \
     pandas \
     ipywidgets \
+    ipyvolume \
     biopython \
     nglview \
     npm
@@ -113,7 +114,7 @@ RUN sudo echo "Running 'sudo' for Gitpod: success"
 #              && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml"
 # ENV GRADLE_USER_HOME=/workspace/.gradle/
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
 
