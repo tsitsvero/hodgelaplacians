@@ -116,14 +116,14 @@ RUN curl -s "https://get.sdkman.io" | bash \
 ENV GRADLE_USER_HOME=/workspace/.gradle/
 
 ### Node.js ###
-ARG NODE_VERSION=10.15.3
-RUN curl -fsSL https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash \
-    && bash -c ". .nvm/nvm.sh \
-        && nvm install $NODE_VERSION \
-        && npm config set python /usr/bin/python --global \
-        && npm config set python /usr/bin/python \
-        && npm install -g typescript yarn"
-ENV PATH=/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:$PATH
+# ARG NODE_VERSION=10.15.3
+# RUN curl -fsSL https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash \
+#     && bash -c ". .nvm/nvm.sh \
+#         && nvm install $NODE_VERSION \
+#         && npm config set python /usr/bin/python --global \
+#         && npm config set python /usr/bin/python \
+#         && npm install -g typescript yarn"
+# ENV PATH=/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:$PATH
 
 RUN sudo jupyter nbextension enable --py --sys-prefix nglview
 RUN sudo jupyter nbextension enable --sys-prefix --py widgetsnbextension
