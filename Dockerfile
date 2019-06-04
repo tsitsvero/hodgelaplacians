@@ -124,8 +124,8 @@ RUN curl -fsSL https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.
         && npm install -g typescript yarn"
 ENV PATH=/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:$PATH
 
-RUN jupyter-nbextension enable --py --sys-prefix nglview
-RUN jupyter nbextension enable --sys-prefix --py widgetsnbextension
+RUN sudo jupyter nbextension enable --py --sys-prefix nglview
+RUN sudo jupyter nbextension enable --sys-prefix --py widgetsnbextension
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 RUN jupyter-labextension install nglview-js-widgets@1.1.2
 RUN jupyter labextension install bqplot
