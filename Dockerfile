@@ -47,7 +47,7 @@ RUN apt-get install -y curl \
     pkg-config
 
 RUN apt-get install -y htop \
-    ag \
+    silversearcher-ag \
     nodejs
 
 RUN pip3 install \
