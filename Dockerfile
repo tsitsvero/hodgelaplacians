@@ -67,12 +67,6 @@ RUN pip3 install \
     nodejs
 
 
-RUN jupyter-nbextension enable --py --sys-prefix nglview
-RUN jupyter nbextension enable --sys-prefix --py widgetsnbextension
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
-RUN jupyter-labextension install nglview-js-widgets@1.1.2
-RUN jupyter labextension install bqplot
-
 # apt clean up
 RUN apt autoremove && rm -rf /var/lib/apt/lists/*
 
@@ -104,3 +98,31 @@ USER gitpod
 # use sudo so that user does not get sudo usage info on (the first) login
 RUN sudo echo "Running 'sudo' for Gitpod: success"
 
+### Java ###
+## Place '.gradle' and 'm2-repository' in /workspace because (1) that's a fast volume, (2) it survives workspace-restarts and (3) it can be warmed-up by pre-builds.
+RUN curl -s "https://get.sdkman.io" | bash \
+ && bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh \
+             && sdk install java 8.0.202-zulufx \
+             && sdk install java 11.0.2-zulufx \
+             && sdk default java 8.0.202-zulufx \
+             && sdk install gradle \
+             && sdk install maven \
+             && mkdir /home/gitpod/.m2 \
+             && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml"
+ENV GRADLE_USER_HOME=/workspace/.gradle/
+
+### Node.js ###
+ARG NODE_VERSION=10.15.3
+RUN curl -fsSL https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash \
+    && bash -c ". .nvm/nvm.sh \
+        && nvm install $NODE_VERSION \
+        && npm config set python /usr/bin/python --global \
+        && npm config set python /usr/bin/python \
+        && npm install -g typescript yarn"
+ENV PATH=/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:$PATH
+
+RUN jupyter-nbextension enable --py --sys-prefix nglview
+RUN jupyter nbextension enable --sys-prefix --py widgetsnbextension
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN jupyter-labextension install nglview-js-widgets@1.1.2
+RUN jupyter labextension install bqplot
