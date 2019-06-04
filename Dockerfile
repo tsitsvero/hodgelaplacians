@@ -74,19 +74,19 @@ RUN pip3 install \
 RUN apt autoremove && rm -rf /var/lib/apt/lists/*
 
 # # Working directory
-# WORKDIR /gudhi
+WORKDIR /gudhi
 
-# RUN curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
-# && tar xf CGAL-4.12.1.tar.xz && cd CGAL-4.12.1 \
-# && cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_HEADER_ONLY=ON . && make all install && cd .. \
-# && curl -LO "https://gforge.inria.fr/frs/download.php/file/37696/2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz" \
-# && tar xf 2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz \
-# && cd 2018-09-04-14-25-00_GUDHI_2.3.0 \
-# && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DWITH_GUDHI_PYTHON=OFF -DPython_ADDITIONAL_VERSIONS=3 ..  \
-# && make all doxygen test install \
-# && cmake -DWITH_GUDHI_PYTHON=ON . \
-# && cd cython \
-# && python3 setup.py install
+RUN curl -LO "https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.12.1/CGAL-4.12.1.tar.xz" \
+&& tar xf CGAL-4.12.1.tar.xz && cd CGAL-4.12.1 \
+&& cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_HEADER_ONLY=ON . && make all install && cd .. \
+&& curl -LO "https://gforge.inria.fr/frs/download.php/file/37696/2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz" \
+&& tar xf 2018-09-04-14-25-00_GUDHI_2.3.0.tar.gz \
+&& cd 2018-09-04-14-25-00_GUDHI_2.3.0 \
+&& mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DWITH_GUDHI_PYTHON=OFF -DPython_ADDITIONAL_VERSIONS=3 ..  \
+&& make all doxygen test install \
+&& cmake -DWITH_GUDHI_PYTHON=ON . \
+&& cd cython \
+&& python3 setup.py install
 
 ### Gitpod user ###
 # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
@@ -114,6 +114,7 @@ RUN sudo echo "Running 'sudo' for Gitpod: success"
 #              && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml"
 # ENV GRADLE_USER_HOME=/workspace/.gradle/
 
+# Node.js installation
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
@@ -133,7 +134,7 @@ RUN sudo jupyter nbextension enable --py --sys-prefix nglview
 RUN sudo jupyter nbextension enable --sys-prefix --py widgetsnbextension
 
 RUN sudo jupyter labextension install @jupyter-widgets/jupyterlab-manager
-RUN sudo jupyter-labextension install nglview-js-widgets@1.1.2
+RUN sudo jupyter-labextension install nglview-js-widgets
 RUN sudo jupyter labextension install ipyvolume
 RUN sudo jupyter labextension install jupyter-threejs
 RUN sudo jupyter labextension install bqplot
