@@ -63,7 +63,8 @@ RUN pip3 install \
     pandas \
     ipywidgets \
     biopython \
-    nglview
+    nglview \
+    nodejs
 
 
 RUN jupyter-nbextension enable --py --sys-prefix nglview
