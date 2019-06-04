@@ -114,7 +114,7 @@ RUN sudo echo "Running 'sudo' for Gitpod: success"
 # ENV GRADLE_USER_HOME=/workspace/.gradle/
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    && sudo apt-get install -y nodejs
 
 
 
