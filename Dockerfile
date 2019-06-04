@@ -131,6 +131,9 @@ RUN sudo apt-get install -y nodejs
 
 RUN sudo jupyter nbextension enable --py --sys-prefix nglview
 RUN sudo jupyter nbextension enable --sys-prefix --py widgetsnbextension
+
 RUN sudo jupyter labextension install @jupyter-widgets/jupyterlab-manager
 RUN sudo jupyter-labextension install nglview-js-widgets@1.1.2
+RUN sudo jupyter labextension install ipyvolume
+RUN sudo jupyter labextension install jupyter-threejs
 RUN sudo jupyter labextension install bqplot
