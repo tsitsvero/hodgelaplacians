@@ -67,7 +67,8 @@ RUN pip3 install \
     ipywidgets \
     biopython \
     nglview \
-    nodejs
+    nodejs \
+    npm
 
 
 # apt clean up
