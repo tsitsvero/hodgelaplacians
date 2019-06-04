@@ -49,7 +49,9 @@ RUN apt-get install -y curl \
 RUN apt-get install -y htop \
     silversearcher-ag \
     nodejs \
-    sudo
+    sudo \
+    zip \
+    unzip
 
 RUN pip3 install \
     Cython \
