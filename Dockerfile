@@ -48,7 +48,6 @@ RUN apt-get install -y curl \
 
 RUN apt-get install -y htop \
     silversearcher-ag \
-    nodejs \
     sudo \
     zip \
     unzip
@@ -67,7 +66,6 @@ RUN pip3 install \
     ipywidgets \
     biopython \
     nglview \
-    nodejs \
     npm
 
 
@@ -104,16 +102,21 @@ RUN sudo echo "Running 'sudo' for Gitpod: success"
 
 ### Java ###
 ## Place '.gradle' and 'm2-repository' in /workspace because (1) that's a fast volume, (2) it survives workspace-restarts and (3) it can be warmed-up by pre-builds.
-RUN curl -s "https://get.sdkman.io" | bash \
- && bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh \
-             && sdk install java 8.0.202-zulufx \
-             && sdk install java 11.0.2-zulufx \
-             && sdk default java 8.0.202-zulufx \
-             && sdk install gradle \
-             && sdk install maven \
-             && mkdir /home/gitpod/.m2 \
-             && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml"
-ENV GRADLE_USER_HOME=/workspace/.gradle/
+#RUN curl -s "https://get.sdkman.io" | bash \
+#  && bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh \
+#              && sdk install java 8.0.202-zulufx \
+#              && sdk install java 11.0.2-zulufx \
+#              && sdk default java 8.0.202-zulufx \
+#              && sdk install gradle \
+#              && sdk install maven \
+#              && mkdir /home/gitpod/.m2 \
+#              && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml"
+# ENV GRADLE_USER_HOME=/workspace/.gradle/
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+
 
 ### Node.js ###
 # ARG NODE_VERSION=10.15.3
