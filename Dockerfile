@@ -67,7 +67,9 @@ RUN pip3 install \
     ipyvolume \
     biopython \
     nglview \
-    npm
+    npm \
+    networkx \
+    graphviz
 
 
 # apt clean up
