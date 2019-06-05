@@ -2,8 +2,8 @@
 image:
   file: Dockerfile
 # Command to start on workspace startup (optional)
-tasks:
-    command: jupyter lab --NotebookApp.token=''
+# tasks:
+#     command: jupyter lab --NotebookApp.token=''
 #   - init: yarn install
 #     command: yarn build
 # Ports to expose on workspace startup (optional)
