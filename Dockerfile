@@ -138,3 +138,5 @@ RUN sudo jupyter-labextension install nglview-js-widgets
 RUN sudo jupyter labextension install ipyvolume
 RUN sudo jupyter labextension install jupyter-threejs
 RUN sudo jupyter labextension install bqplot
+
+RUN export PATH=$PATH:"/workspace/hodgelaplacians"
