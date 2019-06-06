@@ -22,14 +22,6 @@ Input:
 ```python
 pip3 install hodgelaplacians
 ```
-## Dependencies
-* Numpy
-* Scipy
-
-## Docker file and running on Gitpod
-This repository also contains Dockerfile based on Ubuntu 18.04 which contains basic python dependencies as well as installation of Gudhi library.
-
-To run this repository with Dockerfile on Gitpod you can simply press [https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians](https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians).
 
 ## Example
 ```python
@@ -43,6 +35,18 @@ L1 = hl.getHodgeLaplacian(1)
 
 Full example output is available in the [Jupyter notebook](examples/laplacians_combinatorial_data.ipynb).
 
+## Docker file and running on Gitpod
+This repository also contains Dockerfile based on Ubuntu 18.04 which contains basic python dependencies as well as installation of Gudhi library.
+
+To run this repository with Dockerfile (all C++ and Python dependencies pre-loaded) on Gitpod type
+
+[]![Open on Gitpod](/help/browser_field.gif "Open on Gitpod")
+
+or simply press [https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians](https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians).
+
+## Dependencies
+* Numpy
+* Scipy
 
 ## Tutorials and packages on TDA
 
