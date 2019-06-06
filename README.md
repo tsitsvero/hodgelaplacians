@@ -50,7 +50,7 @@ After you have [launched the workspace](https://misha.website/share/video/open_w
 * Numpy
 * Scipy
 
-## Tutorials and packages on TDA
+## More tutorials and packages on TDA
 
 There are many tools available on Topological Data Analysis.
 
