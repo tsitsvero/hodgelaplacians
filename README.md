@@ -46,7 +46,7 @@ To run this repository with Dockerfile (all C++ and Python dependencies pre-load
 
 or simply press [https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians](https://gitpod.io/#https://github.com/tsitsvero/hodgelaplacians).
 
-After you have [launched the workspace](https://misha.website/share/video/open_workspace.webm), you can simply [launch the Jupyter Lab](https://misha.website/share/video/open_examples_proteins.webm) to play with [examples and tutorials](https://github.com/tsitsvero/hodgelaplacians/tree/master/examples).
+After you have [launched the workspace](https://misha.website/share/video/open_workspace.webm), you can simply [launch the Jupyter Lab](https://misha.website/share/video/open_examples_proteins.webm) (please run "jupyter lab --ip 127.0.0.1" instead of just "jupyter lab") to play with [examples and tutorials](https://github.com/tsitsvero/hodgelaplacians/tree/master/examples).
 
 ## Dependencies
 * Numpy
