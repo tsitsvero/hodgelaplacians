@@ -20,6 +20,62 @@ Input:
 * Symplex tree with filtration values ([GUDHI format](http://gudhi.gforge.inria.fr/python/latest/simplex_tree_ref.html#gudhi.SimplexTree.get_skeleton))
 
 
+## Mathematical Formulae
+
+### Boundary Operator
+
+The $d$-th boundary operator $\partial_d$ maps a $d$-simplex to an alternating signed sum of its $(d-1)$-faces:
+
+$$\partial_d([v_0, \dots, v_d]) = \sum_{i=0}^{d} (-1)^i \, [v_0, \dots, \hat{v}_i, \dots, v_d]$$
+
+where $\hat{v}_i$ denotes that vertex $v_i$ is omitted.
+
+### Hodge Laplacian
+
+Let $B_d$ denote the matrix of $\partial_d$. The $d$-th Hodge Laplacian is:
+
+$$L_d = \begin{cases} B_1 B_1^\top & d = 0 \\[6pt] B_{d+1} B_{d+1}^\top + B_d^\top B_d & 0 < d < d_{\max} \\[6pt] B_d^\top B_d & d = d_{\max} \end{cases}$$
+
+By the Hodge decomposition theorem, $\ker L_d \cong H_d$ — the $d$-th homology group of the complex.
+
+### Bochner Laplacian
+
+The Bochner Laplacian is obtained from $L_d$ via the **Weitzenböck decomposition**, replacing the diagonal with row-wise $\ell^1$ norms:
+
+$$LB_d = L_d - \operatorname{diag}(L_d) + \operatorname{diag}\!\left(\|L_d\|_{\text{row},1}\right)$$
+
+### Combinatorial Forman–Ricci Curvature
+
+The discrete Ricci curvature of each $d$-simplex is the diagonal of the difference between the two Laplacians:
+
+$$\operatorname{Ric}_d = \operatorname{diag}(L_d - LB_d)$$
+
+### Heat Kernels
+
+Heat diffusion on $d$-chains is governed by the matrix exponential:
+
+$$H_d(t) = e^{-t\, L_d}, \qquad HB_d(t) = e^{-t\, LB_d}$$
+
+### Chain Diffusion
+
+A $d$-chain $c$ evolves under diffusion time $t$ as:
+
+$$c(t) = H_d(t)\, c = e^{-t\, L_d}\, c \qquad \text{(Hodge)}$$
+
+$$c(t) = HB_d(t)\, c = e^{-t\, LB_d}\, c \qquad \text{(Bochner)}$$
+
+### Spectral Decomposition
+
+Eigenvalues $\lambda$ and eigenvectors $v$ of the Laplacians satisfy:
+
+$$L_d\, v = \lambda\, v \qquad \text{(Hodge spectrum)}$$
+
+$$LB_d\, v = \lambda\, v \qquad \text{(Bochner spectrum)}$$
+
+Computed efficiently using the ARPACK shift-invert method. Zero eigenvalues of $L_d$ count the independent $d$-dimensional holes (Betti numbers).
+
+---
+
 ## Installation
 ```python
 pip3 install hodgelaplacians
