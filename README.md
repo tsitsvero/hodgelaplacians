@@ -34,7 +34,7 @@ where $\hat{v}_i$ denotes that vertex $v_i$ is omitted.
 
 Let $B_d$ denote the matrix of $\partial_d$. The $d$-th Hodge Laplacian is:
 
-$$L_d = \begin{cases} B_1 B_1^\top & d = 0 \\[6pt] B_{d+1} B_{d+1}^\top + B_d^\top B_d & 0 < d < d_{\max} \\[6pt] B_d^\top B_d & d = d_{\max} \end{cases}$$
+$$L_d = \begin{cases} B_1 B_1^\top & d = 0 \\ B_{d+1} B_{d+1}^\top + B_d^\top B_d & 0 < d < d_{\max} \\ B_d^\top B_d & d = d_{\max} \end{cases}$$
 
 By the Hodge decomposition theorem, $\ker L_d \cong H_d$ — the $d$-th homology group of the complex.
 
@@ -42,13 +42,13 @@ By the Hodge decomposition theorem, $\ker L_d \cong H_d$ — the $d$-th homology
 
 The Bochner Laplacian is obtained from $L_d$ via the **Weitzenböck decomposition**, replacing the diagonal with row-wise $\ell^1$ norms:
 
-$$LB_d = L_d - \operatorname{diag}(L_d) + \operatorname{diag}\!\left(\|L_d\|_{\text{row},1}\right)$$
+$$LB_d = L_d - \mathrm{diag}(L_d) + \mathrm{diag}(\|L_d\|_{\mathrm{row},1})$$
 
 ### Combinatorial Forman–Ricci Curvature
 
 The discrete Ricci curvature of each $d$-simplex is the diagonal of the difference between the two Laplacians:
 
-$$\operatorname{Ric}_d = \operatorname{diag}(L_d - LB_d)$$
+$$\mathrm{Ric}_d = \mathrm{diag}(L_d - LB_d)$$
 
 ### Heat Kernels
 
@@ -60,17 +60,17 @@ $$H_d(t) = e^{-t\, L_d}, \qquad HB_d(t) = e^{-t\, LB_d}$$
 
 A $d$-chain $c$ evolves under diffusion time $t$ as:
 
-$$c(t) = H_d(t)\, c = e^{-t\, L_d}\, c \qquad \text{(Hodge)}$$
+$$c(t) = H_d(t)\, c = e^{-t\, L_d}\, c \qquad \mathrm{(Hodge)}$$
 
-$$c(t) = HB_d(t)\, c = e^{-t\, LB_d}\, c \qquad \text{(Bochner)}$$
+$$c(t) = HB_d(t)\, c = e^{-t\, LB_d}\, c \qquad \mathrm{(Bochner)}$$
 
 ### Spectral Decomposition
 
 Eigenvalues $\lambda$ and eigenvectors $v$ of the Laplacians satisfy:
 
-$$L_d\, v = \lambda\, v \qquad \text{(Hodge spectrum)}$$
+$$L_d\, v = \lambda\, v \qquad \mathrm{(Hodge\ spectrum)}$$
 
-$$LB_d\, v = \lambda\, v \qquad \text{(Bochner spectrum)}$$
+$$LB_d\, v = \lambda\, v \qquad \mathrm{(Bochner\ spectrum)}$$
 
 Computed efficiently using the ARPACK shift-invert method. Zero eigenvalues of $L_d$ count the independent $d$-dimensional holes (Betti numbers).
 
